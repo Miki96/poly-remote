@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="link" onclick="page(1)"></div>
+        <div class="link" onclick="page(2)"></div>
+        <div class="link" onclick="page(3)"></div>
+        <div class="link" onclick="page(4)"></div>
+    </nav>
+
+    <div class="pages">
+
+        <div class="page page1">
+        
+            <div id="players" class="players">
+                <p id="selected" onclick="show()">MusicBee</p>
+                <div class="drop"></div>
+                <div id="content">
+                    <p class="player" onclick="send(101)">PotPlayer</p>
+                    <p class="player" onclick="send(102)">MusicBee</p>
+                    <p class="player" onclick="send(103)">Winamp</p>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="wrap">
+                <div onclick="send(2)">PREV</div>
+                <div onclick="send(5)">PP</div>
+                <div onclick="send(1)">NEXT</div>
+                <div onclick="send(4)">VOL-</div>
+                <div onclick="send(6)">MUTE</div>
+                <div onclick="send(3)">VOL+</div>
+            </div>
+        
+            <div class="line"></div>
+            <div id="hud"></div>
+            <div class="imageContainer">
+                <div class="fullToggle" onclick="full()"></div>
+                <div class="refresh" onclick="refresh()"></div>
+            </div>
+
+        </div>
+    
+        <div class="page page2">
+    
+            <div class="panel" id="area">
+                Touch
+            </div>
+    
+        </div>
+
+        <div class="page page3">
+            
+            <div class="text">
+                <textarea id="text" placeholder="Enter your text here..." rows="5"></textarea>
+                <div class="clear" onclick="del()"></div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="keyboard">
+                <div class="typeWrap">
+                    <div class="key" onclick="text(31)"></div>
+                </div>
+                <div class="keys">
+                    <div class="but" onclick="send(32)">Back</div>
+                    <div class="but" onclick="send(33)">Enter</div>
+                    <div class="but" onclick="send(34)">Tab</div>
+                    <div class="but" onclick="send(35)">Esc</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page page4">
+            <div class="wrap power">
+                <div onclick="send(7)"></div>
+                <div onclick="send(8)"></div>
+                <div onclick="send(9)"></div>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+    </div>
+
+
+    <!-- scripts -->
+    <script src="ext/hammer.min.js"></script>
+    <script src="script.js"></script>
+    <script src="panel.js"></script>
+</body>
+</html>
