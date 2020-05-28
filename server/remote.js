@@ -167,6 +167,7 @@ http.createServer(function (req, res) {
                 // volume up
                 for (let i = 0; i < 5; i++) {
                     robot.keyTap('audio_vol_up');
+                    
                 }
                 break;
             case 4:

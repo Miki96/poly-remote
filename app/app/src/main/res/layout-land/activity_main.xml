@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:id="@+id/top_nav"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:background="#3E3E3E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/selected"
+        android:layout_width="5dp"
+        android:layout_height="0dp"
+        android:background="#EEEEEE"
+        app:layout_constraintBottom_toBottomOf="@id/button_music"
+        app:layout_constraintEnd_toEndOf="@+id/top_nav"
+        app:layout_constraintTop_toTopOf="@id/button_music" />
+
+    <FrameLayout
+        android:id="@+id/fragment_holder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#555555"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/top_nav"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/button_menu"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_music"
+        app:layout_constraintEnd_toEndOf="@+id/button_music"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button_music"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:srcCompat="@drawable/ic_menu" />
+
+    <ImageButton
+        android:id="@+id/button_music"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_mouse"
+        app:layout_constraintEnd_toEndOf="@+id/button_mouse"
+        app:layout_constraintStart_toStartOf="@+id/button_mouse"
+        app:layout_constraintTop_toBottomOf="@+id/button_menu"
+        app:srcCompat="@drawable/music" />
+
+    <ImageButton
+        android:id="@+id/button_mouse"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_keyboard"
+        app:layout_constraintEnd_toEndOf="@+id/button_keyboard"
+        app:layout_constraintStart_toStartOf="@+id/button_keyboard"
+        app:layout_constraintTop_toBottomOf="@+id/button_music"
+        app:srcCompat="@drawable/mouse" />
+
+    <ImageButton
+        android:id="@+id/button_keyboard"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_gamepad"
+        app:layout_constraintEnd_toEndOf="@+id/button_gamepad"
+        app:layout_constraintStart_toStartOf="@+id/button_gamepad"
+        app:layout_constraintTop_toBottomOf="@+id/button_mouse"
+        app:srcCompat="@drawable/ic_board" />
+
+    <ImageButton
+        android:id="@+id/button_gamepad"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_programs"
+        app:layout_constraintEnd_toEndOf="@+id/button_programs"
+        app:layout_constraintStart_toStartOf="@+id/button_programs"
+        app:layout_constraintTop_toBottomOf="@+id/button_keyboard"
+        app:srcCompat="@drawable/ic_game" />
+
+    <ImageButton
+        android:id="@+id/button_programs"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:paddingLeft="22dp"
+        android:paddingRight="22dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_gamepad"
+        app:srcCompat="@drawable/power" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
