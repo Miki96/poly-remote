@@ -1,7 +1,9 @@
 package com.example.polyremote;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +24,7 @@ public class WebRequests {
     }
 
     private String urlRoot;
+    private MainActivity activity;
 
     private WebRequests() {
         this.urlRoot = null;
@@ -31,7 +34,6 @@ public class WebRequests {
     public static WebRequests getInstance() {
         if (instance == null) {
             instance = new WebRequests();
-            instance.urlRoot = "http://192.168.100.97:6252/";
         }
         return instance;
     }
@@ -40,6 +42,9 @@ public class WebRequests {
         this.urlRoot = urlRoot;
     }
 
+    public void setActivity(MainActivity activity) {
+        this.activity = activity;
+    }
 
     public void sendAction(Context c, REMOTE_ACTION action) {
 
@@ -61,8 +66,13 @@ public class WebRequests {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     //binding.textView.setText("That didn't work! \n" + error.getMessage() + "\n" + error.getLocalizedMessage());
+                    activity.serverError(error.getMessage());
                 }
         });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(  5 * 1000,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
