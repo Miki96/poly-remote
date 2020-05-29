@@ -45,7 +45,7 @@ public class MusicFragment extends Fragment {
 
     private void addAction(ImageButton button, WebRequests.REMOTE_ACTION action) {
         button.setOnClickListener((View v) -> {
-            WebRequests.getInstance().sendAction(getContext(), action);
+            WebRequests.getInstance().sendAction(action);
         });
     }
 }

@@ -21,10 +21,16 @@ public class WebRequests {
         VOLUME_UP,
         VOLUME_DOWN,
         MUTE,
+        MOUSE_LEFT,
+        MOUSE_RIGHT,
+        MOUSE_MOVE,
+        MOUSE_SCROLL,
+        MOUSE_DRAG
     }
 
     private String urlRoot;
     private MainActivity activity;
+    private RequestQueue queue;
 
     private WebRequests() {
         this.urlRoot = null;
@@ -44,39 +50,49 @@ public class WebRequests {
 
     public void setActivity(MainActivity activity) {
         this.activity = activity;
+        this.queue = Volley.newRequestQueue(activity);
     }
 
-    public void sendAction(Context c, REMOTE_ACTION action) {
-
+    public void sendAction(REMOTE_ACTION action) {
         String actionCode = getAction(action);
-
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(c);
         String url = urlRoot + "?action=" + actionCode;
 
-        // Request a string response from the provided URL.
+        // create request and add to queue
+        sendRequest(url);
+    }
+
+    public void mouseAction(REMOTE_ACTION action, int x, int y, int speed) {
+        String actionCode = getAction(action);
+        String url = urlRoot + "?action=" + actionCode +
+                "&x=" + x +
+                "&y=" + y +
+                "&speed=" + speed;
+
+        sendRequest(url);
+    }
+
+    private void sendRequest(String url) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-            new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    // Display the first 500 characters of the response string.
-                    //binding.textView.setText("Response is: "+ response.substring(0,500));
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    //binding.textView.setText("That didn't work! \n" + error.getMessage() + "\n" + error.getLocalizedMessage());
-                    activity.serverError(error.getMessage());
-                }
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //binding.textView.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //binding.textView.setText("That didn't work! \n" + error.getMessage() + "\n" + error.getLocalizedMessage());
+                activity.serverError(error.getMessage());
+            }
         });
 
+        // set timeout time
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(  5 * 1000,
                 0,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
     }
 
     private String getAction(REMOTE_ACTION action) {
@@ -102,6 +118,21 @@ public class WebRequests {
                 break;
             case MUTE:
                 r = "6";
+                break;
+            case MOUSE_MOVE:
+                r = "20";
+                break;
+            case MOUSE_LEFT:
+                r = "21";
+                break;
+            case MOUSE_RIGHT:
+                r = "22";
+                break;
+            case MOUSE_SCROLL:
+                r = "23";
+                break;
+            case MOUSE_DRAG:
+                r = "24";
                 break;
         }
         return r;

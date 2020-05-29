@@ -224,7 +224,6 @@ http.createServer(function (req, res) {
                 // change position
                 robot.setMouseDelay(2);
                 robot.moveMouse(mouse.x + x, mouse.y + y);
-
                 break;
             case 21:
                 // mouse left click
@@ -239,9 +238,21 @@ http.createServer(function (req, res) {
                 var speed = 4;
                 var y = parseInt(url.parse(req.url, true).query.y) * speed;
                 console.log('y ' + y);
-                robot.scrollMouse(0, y);
+                robot.scrollMouse(100, 0);
                 break;
+            case 24:
+                // move drag
+                var speed = parseInt(url.parse(req.url, true).query.speed);
+                var x = parseInt(url.parse(req.url, true).query.x) * speed;
+                var y = parseInt(url.parse(req.url, true).query.y) * speed;
+                console.log('x ' + x + ' y ' + y);
 
+                // get position
+                var mouse = robot.getMousePos();
+                // change position
+                robot.setMouseDelay(2);
+                robot.dragMouse(mouse.x + x, mouse.y + y);
+                break;
                 // KEYBOARD
             case 30:
                 // removed speak
