@@ -45,7 +45,15 @@ public class WebRequests {
         MOUSE_MOVE,
         MOUSE_SCROLL,
         MOUSE_DRAG,
-        SCREEN
+        SCREEN,
+        SHUTDOWN,
+        RESTART,
+        SLEEP,
+        KEYBOARD_TYPE,
+        KEYBOARD_BACK,
+        KEYBOARD_RETURN,
+        KEYBOARD_TAB,
+        KEYBOARD_ESC,
     }
 
     private String urlRoot;
@@ -114,12 +122,18 @@ public class WebRequests {
         sendRequest(url);
     }
 
+    public void typeAction(REMOTE_ACTION action, String text) {
+        String actionCode = getAction(action);
+        String url = urlRoot + "?action=" + actionCode +
+                "&text=" + text;
+        sendRequest(url);
+    }
+
     public void getImage(REMOTE_ACTION action, NetworkImageView image) {
         String actionCode = getAction(action);
         String url = urlRoot + "images/screenshot.jpg";
         imageLoader.get(url, ImageLoader.getImageListener(image, 0, 0), 3000, 3000, ImageView.ScaleType.CENTER);
         image.setImageUrl(url, imageLoader);
-
     }
 
     private void sendRequest(String url) {
@@ -150,8 +164,6 @@ public class WebRequests {
         String r = null;
         switch (action) {
             case PLAY:
-                r = "5";
-                break;
             case PAUSE:
                 r = "5";
                 break;
@@ -184,6 +196,33 @@ public class WebRequests {
                 break;
             case MOUSE_DRAG:
                 r = "24";
+                break;
+            case SCREEN:
+                r = "40";
+                break;
+            case SHUTDOWN:
+                r = "7";
+                break;
+            case RESTART:
+                r = "9";
+                break;
+            case SLEEP:
+                r = "8";
+                break;
+            case KEYBOARD_TYPE:
+                r = "31";
+                break;
+            case KEYBOARD_BACK:
+                r = "32";
+                break;
+            case KEYBOARD_RETURN:
+                r = "33";
+                break;
+            case KEYBOARD_TAB:
+                r = "34";
+                break;
+            case KEYBOARD_ESC:
+                r = "35";
                 break;
         }
         return r;

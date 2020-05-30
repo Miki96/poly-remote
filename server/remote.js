@@ -28,7 +28,7 @@ function openPlayer(name) {
 
 http.createServer(function (req, res) {
     // print request
-    console.log('----------------REQUEST: ' + req.url);
+    //console.log('----------------REQUEST: ' + req.url);
 
     // favicon
     if (req.url === '/favicon.ico') {
@@ -165,16 +165,15 @@ http.createServer(function (req, res) {
                 break;
             case 3:
                 // volume up
-                for (let i = 0; i < 5; i++) {
-                    robot.keyTap('audio_vol_up');
-                    
-                }
+                //for (let i = 0; i < 5; i++) {
+                    robot.keyTap('audio_vol_up');  
+                //}
                 break;
             case 4:
                 // volume down
-                for (let i = 0; i < 5; i++) {
+                //for (let i = 0; i < 5; i++) {
                     robot.keyTap('audio_vol_down');
-                }
+                //}
                 break;
             case 5:
                 // pause/play
@@ -217,7 +216,7 @@ http.createServer(function (req, res) {
                 var speed = parseInt(url.parse(req.url, true).query.speed);
                 var x = parseInt(url.parse(req.url, true).query.x) * speed;
                 var y = parseInt(url.parse(req.url, true).query.y) * speed;
-                console.log('x ' + x + ' y ' + y);
+                //console.log('x ' + x + ' y ' + y);
 
                 // get position
                 var mouse = robot.getMousePos();
@@ -238,7 +237,7 @@ http.createServer(function (req, res) {
                 var speed = 4;
                 var y = parseInt(url.parse(req.url, true).query.y) * speed;
                 console.log('y ' + y);
-                robot.scrollMouse(100, 0);
+                robot.scrollMouse(y, 0);
                 break;
             case 24:
                 // move drag
@@ -262,7 +261,7 @@ http.createServer(function (req, res) {
                 var text = url.parse(req.url, true).query.text;
                 text = text.replace("%20", " ");
                 console.log(text);
-                robot.typeStringDelayed(text, 1200);
+                robot.typeString(text);
                 break;
             case 32:
                 // backspace

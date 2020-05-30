@@ -137,10 +137,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void serverError(String info) {
-        String msg = "Server error: Make sure your IP is correct and server is started.";
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        //String msg = "Server error: Make sure your IP is correct and server is started.";
+        //Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
-
-
 
 }
