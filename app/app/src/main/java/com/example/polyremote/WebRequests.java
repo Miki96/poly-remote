@@ -1,6 +1,9 @@
 package com.example.polyremote;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.LruCache;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -8,10 +11,26 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 public class WebRequests {
+
+    public class NoCacheImageLoader extends ImageLoader {
+        public NoCacheImageLoader(RequestQueue queue, ImageCache imageCache) {
+            super(queue, imageCache);
+        }
+
+        @Override
+        protected Request<Bitmap> makeImageRequest(String requestUrl, int maxWidth, int maxHeight, ImageView.ScaleType scaleType, String cacheKey) {
+            Request<Bitmap> request =  super.makeImageRequest(requestUrl, maxWidth, maxHeight, scaleType, cacheKey);
+            // key method
+            request.setShouldCache(false);
+            return request;
+        }
+    }
 
     enum REMOTE_ACTION {
         PLAY,
@@ -25,15 +44,21 @@ public class WebRequests {
         MOUSE_RIGHT,
         MOUSE_MOVE,
         MOUSE_SCROLL,
-        MOUSE_DRAG
+        MOUSE_DRAG,
+        SCREEN
     }
 
     private String urlRoot;
     private MainActivity activity;
     private RequestQueue queue;
+    private NoCacheImageLoader imageLoader;
 
     private WebRequests() {
         this.urlRoot = null;
+    }
+
+    public ImageLoader getImageLoader() {
+        return imageLoader;
     }
 
     private static WebRequests instance;
@@ -51,6 +76,24 @@ public class WebRequests {
     public void setActivity(MainActivity activity) {
         this.activity = activity;
         this.queue = Volley.newRequestQueue(activity);
+
+        // create image loader
+        this.imageLoader = new NoCacheImageLoader(queue,
+            new ImageLoader.ImageCache() {
+                private final LruCache<String, Bitmap>
+                            cache = new LruCache<String, Bitmap>(20);
+
+                @Override
+                public Bitmap getBitmap(String url) {
+                    //return cache.get(url);
+                    return null;
+                }
+
+                @Override
+                public void putBitmap(String url, Bitmap bitmap) {
+                    //cache.put(url, bitmap);
+                }
+            });
     }
 
     public void sendAction(REMOTE_ACTION action) {
@@ -69,6 +112,14 @@ public class WebRequests {
                 "&speed=" + speed;
 
         sendRequest(url);
+    }
+
+    public void getImage(REMOTE_ACTION action, NetworkImageView image) {
+        String actionCode = getAction(action);
+        String url = urlRoot + "images/screenshot.jpg";
+        imageLoader.get(url, ImageLoader.getImageListener(image, 0, 0), 3000, 3000, ImageView.ScaleType.CENTER);
+        image.setImageUrl(url, imageLoader);
+
     }
 
     private void sendRequest(String url) {
@@ -139,6 +190,24 @@ public class WebRequests {
     }
 
 
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

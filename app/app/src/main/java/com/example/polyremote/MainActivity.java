@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new KeyboardFragment();
                 break;
             case 3:
-                fragment = new GamepadFragment();
+                fragment = new DesktopFragment();
                 break;
             case 4:
                 fragment = new ProgramsFragment();

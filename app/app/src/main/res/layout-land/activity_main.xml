@@ -94,14 +94,13 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:padding="17dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/button_gamepad"
         app:layout_constraintEnd_toEndOf="@+id/button_gamepad"
         app:layout_constraintStart_toStartOf="@+id/button_gamepad"
         app:layout_constraintTop_toBottomOf="@+id/button_mouse"
-        app:srcCompat="@drawable/ic_board" />
+        app:srcCompat="@drawable/keyboard" />
 
     <ImageButton
         android:id="@+id/button_gamepad"
@@ -110,14 +109,13 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:padding="20dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/button_programs"
         app:layout_constraintEnd_toEndOf="@+id/button_programs"
         app:layout_constraintStart_toStartOf="@+id/button_programs"
         app:layout_constraintTop_toBottomOf="@+id/button_keyboard"
-        app:srcCompat="@drawable/ic_game" />
+        app:srcCompat="@drawable/desktop" />
 
     <ImageButton
         android:id="@+id/button_programs"

@@ -99,15 +99,14 @@
         android:layout_height="64dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingTop="22dp"
-        android:paddingBottom="22dp"
+        android:padding="18dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@id/top_nav"
         app:layout_constraintEnd_toStartOf="@+id/button_gamepad"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_mouse"
         app:layout_constraintTop_toTopOf="@id/top_nav"
-        app:srcCompat="@drawable/ic_board" />
+        app:srcCompat="@drawable/keyboard" />
 
     <ImageButton
         android:id="@+id/button_gamepad"
@@ -124,7 +123,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_keyboard"
         app:layout_constraintTop_toTopOf="@id/top_nav"
-        app:srcCompat="@drawable/ic_game" />
+        app:srcCompat="@drawable/desktop" />
 
     <ImageButton
         android:id="@+id/button_programs"
