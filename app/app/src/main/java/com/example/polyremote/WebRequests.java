@@ -33,6 +33,7 @@ public class WebRequests {
     }
 
     enum REMOTE_ACTION {
+        TEST,
         PLAY,
         PAUSE,
         NEXT,
@@ -104,6 +105,30 @@ public class WebRequests {
             });
     }
 
+    public void testConnection(REMOTE_ACTION action) {
+        String actionCode = getAction(action);
+        String url = urlRoot + "?action=" + actionCode;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    activity.serverStatusUpdate(true);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    activity.serverStatusUpdate(false);
+                }
+        });
+
+        // set timeout time
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(  3 * 1000,
+                0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        queue.add(stringRequest);
+    }
+
     public void sendAction(REMOTE_ACTION action) {
         String actionCode = getAction(action);
         String url = urlRoot + "?action=" + actionCode;
@@ -137,20 +162,7 @@ public class WebRequests {
     }
 
     private void sendRequest(String url) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        //binding.textView.setText("Response is: "+ response.substring(0,500));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //binding.textView.setText("That didn't work! \n" + error.getMessage() + "\n" + error.getLocalizedMessage());
-                activity.serverError(error.getMessage());
-            }
-        });
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, null, null);
 
         // set timeout time
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(  5 * 1000,
@@ -163,6 +175,9 @@ public class WebRequests {
     private String getAction(REMOTE_ACTION action) {
         String r = null;
         switch (action) {
+            case TEST:
+                r = "0";
+                break;
             case PLAY:
             case PAUSE:
                 r = "5";

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="notifications_category"
+        app:title="Notifications">
+
+        <SwitchPreferenceCompat
+            app:key="notifications"
+            app:title="Notification control"
+            app:summary="Show playback controls in notifications"/>
+
+        <SeekBarPreference
+            app:key="seek"
+            app:title="Seeker time"/>
+
+        <EditTextPreference
+            app:key="ip"
+            app:title="Server IP"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="192.168.0.1:2222"
+            app:summary="Server address to control with remote"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="help_category"
+        app:title="Help">
+
+        <Preference
+            app:key="feedback"
+            app:summary="Report technical issues or suggest new features"
+            app:title="Send feedback"/>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

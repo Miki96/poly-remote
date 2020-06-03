@@ -8,13 +8,16 @@ import androidx.fragment.app.FragmentTransaction;
 import android.animation.ObjectAnimator;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import com.example.polyremote.databinding.ActivityMainBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     private void initializeService() {
         WebRequests.getInstance().setActivity(this);
         WebRequests.getInstance().setUrlRoot("http://192.168.100.97:6252/");
+        // test connection
+        WebRequests.getInstance().testConnection(WebRequests.REMOTE_ACTION.MOUSE_RIGHT);
     }
 
     @Override
@@ -92,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 fragment = new ProgramsFragment();
                 break;
+            case 5:
+                fragment = new SettingsFragment();
+                break;
         }
 
         if (fragment != null) {
@@ -107,8 +115,9 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonMusic.setOnClickListener((View v) -> { changeFragment(0); });
         binding.buttonMouse.setOnClickListener((View v) -> { changeFragment(1); });
         binding.buttonKeyboard.setOnClickListener((View v) -> { changeFragment(2); });
-        binding.buttonGamepad.setOnClickListener((View v) -> { changeFragment(3); });
-        binding.buttonPrograms.setOnClickListener((View v) -> { changeFragment(4); });
+        binding.buttonDesktop.setOnClickListener((View v) -> { changeFragment(3); });
+        binding.buttonPower.setOnClickListener((View v) -> { changeFragment(4); });
+        binding.buttonSettings.setOnClickListener((View v) -> { changeFragment(5); });
 
         // selected callback
         binding.selected.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -136,9 +145,31 @@ public class MainActivity extends AppCompatActivity {
         animation.start();
     }
 
-    public void serverError(String info) {
-        //String msg = "Server error: Make sure your IP is correct and server is started.";
-        //Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    public void serverStatusUpdate(boolean connected) {
+        String msg;
+        if (connected) {
+            msg = "Server connected. Start using your remote";
+        } else {
+            msg = "Server error. Check IP in settings.";
+        }
+
+        Snackbar snackbar = Snackbar.make(binding.snackHolder, msg, Snackbar.LENGTH_LONG);
+        snackbar.setTextColor(Color.WHITE);
+        snackbar.setActionTextColor(Color.GRAY);
+
+        if (connected) {
+            snackbar.setAction("OK", (View v) -> {
+            });
+        } else if (page != 5) {
+            snackbar.setAction("SETTINGS", (View v) -> {
+                changeFragment(5);
+            });
+        }
+
+        snackbar.show();
+
+        Log.d("MIKI", "STATUS");
+
     }
 
 }

@@ -25,50 +25,39 @@
         app:layout_constraintEnd_toEndOf="@+id/top_nav"
         app:layout_constraintTop_toTopOf="@id/button_music" />
 
-    <FrameLayout
-        android:id="@+id/fragment_holder"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/snack_holder"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:animateLayoutChanges="true"
         android:background="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/top_nav"
         app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fragment_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/button_menu"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="65dp"
-        android:layout_height="0dp"
-        android:background="?android:selectableItemBackground"
-        android:paddingLeft="22dp"
-        android:paddingRight="22dp"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/button_music"
-        app:layout_constraintEnd_toEndOf="@+id/button_music"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button_music"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside"
-        app:srcCompat="@drawable/ic_menu" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <ImageButton
         android:id="@+id/button_music"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="65dp"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingLeft="22dp"
-        android:paddingRight="22dp"
+        android:padding="22dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/button_mouse"
         app:layout_constraintEnd_toEndOf="@+id/button_mouse"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/button_mouse"
-        app:layout_constraintTop_toBottomOf="@+id/button_menu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
         app:srcCompat="@drawable/music" />
 
     <ImageButton
@@ -78,8 +67,7 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingLeft="22dp"
-        android:paddingRight="22dp"
+        android:padding="22dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/button_keyboard"
         app:layout_constraintEnd_toEndOf="@+id/button_keyboard"
@@ -94,43 +82,57 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:padding="17dp"
+        android:padding="22dp"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/button_gamepad"
-        app:layout_constraintEnd_toEndOf="@+id/button_gamepad"
-        app:layout_constraintStart_toStartOf="@+id/button_gamepad"
+        app:layout_constraintBottom_toTopOf="@+id/button_desktop"
+        app:layout_constraintEnd_toEndOf="@+id/button_desktop"
+        app:layout_constraintStart_toStartOf="@+id/button_desktop"
         app:layout_constraintTop_toBottomOf="@+id/button_mouse"
         app:srcCompat="@drawable/keyboard" />
 
     <ImageButton
-        android:id="@+id/button_gamepad"
+        android:id="@+id/button_desktop"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="65dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:padding="20dp"
+        android:padding="22dp"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/button_programs"
-        app:layout_constraintEnd_toEndOf="@+id/button_programs"
-        app:layout_constraintStart_toStartOf="@+id/button_programs"
+        app:layout_constraintBottom_toTopOf="@+id/button_power"
+        app:layout_constraintEnd_toEndOf="@+id/button_power"
+        app:layout_constraintStart_toStartOf="@+id/button_power"
         app:layout_constraintTop_toBottomOf="@+id/button_keyboard"
         app:srcCompat="@drawable/desktop" />
 
     <ImageButton
-        android:id="@+id/button_programs"
+        android:id="@+id/button_power"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="65dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="?android:selectableItemBackground"
-        android:paddingLeft="22dp"
-        android:paddingRight="22dp"
+        android:padding="22dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/button_settings"
+        app:layout_constraintEnd_toEndOf="@+id/button_settings"
+        app:layout_constraintStart_toStartOf="@+id/button_settings"
+        app:layout_constraintTop_toBottomOf="@+id/button_desktop"
+        app:srcCompat="@drawable/power" />
+
+    <ImageButton
+        android:id="@+id/button_settings"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="65dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:padding="22dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_gamepad"
-        app:srcCompat="@drawable/power" />
+        app:layout_constraintTop_toBottomOf="@+id/button_power"
+        app:srcCompat="@drawable/settings" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
