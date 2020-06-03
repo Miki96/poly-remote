@@ -140,7 +140,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button_power"
         app:layout_constraintTop_toTopOf="@id/top_nav"
-        app:srcCompat="@drawable/settings7" />
+        app:srcCompat="@drawable/settings" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
