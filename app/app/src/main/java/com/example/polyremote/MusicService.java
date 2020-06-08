@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.Toast;
@@ -97,7 +98,7 @@ public class MusicService extends Service {
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 // Show controls on lock screen even when user hides sensitive content.
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setSmallIcon(R.drawable.ic_play_circle)
+                .setSmallIcon(R.drawable.ic_logo)
                 // Add media control buttons that invoke intents in your media service
                 .addAction(R.drawable.ic_prev, "Previous", pIntentPrev)
                 .addAction(R.drawable.ic_pause, "Pause", pIntentPlay)
@@ -105,6 +106,8 @@ public class MusicService extends Service {
                 .addAction(R.drawable.ic_volume_up, "Mute", pIntentMute)
                 .addAction(R.drawable.ic_close, "Close", pIntentClose)
                 .setContentIntent(pIntentApp)
+                .setColorized(true)
+                .setColor(Color.BLACK)
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                         .setShowActionsInCompactView(0, 1, 2)
                         .setShowCancelButton(true))

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#151515"
+    tools:context=".ControlFragment">
+
+
+    <ImageButton
+        android:id="@+id/button_prev"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/prev"
+        app:layout_constraintEnd_toStartOf="@+id/button_play"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_play"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/line"
+        app:layout_constraintTop_toTopOf="@+id/button_prev" />
+
+    <ImageButton
+        android:id="@+id/button_next"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/next"
+        app:layout_constraintStart_toEndOf="@+id/button_play"
+        app:layout_constraintTop_toTopOf="@+id/button_play" />
+
+    <ImageButton
+        android:id="@+id/button_vol_down"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/down"
+        app:layout_constraintStart_toStartOf="@+id/button_prev"
+        app:layout_constraintTop_toBottomOf="@+id/button_prev" />
+
+    <ImageButton
+        android:id="@+id/button_vol_mute"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/mute"
+        app:layout_constraintStart_toStartOf="@+id/button_play"
+        app:layout_constraintTop_toTopOf="@+id/button_vol_down" />
+
+    <ImageButton
+        android:id="@+id/button_vol_up"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:alpha="1"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/up"
+        app:layout_constraintStart_toStartOf="@+id/button_next"
+        app:layout_constraintTop_toTopOf="@+id/button_vol_mute" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        app:backgroundTint="#EA1A1A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add" />
+
+    <ImageButton
+        android:id="@+id/button_shutdown"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="24dp"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/shutdown"
+        app:layout_constraintBottom_toBottomOf="@+id/button_vol_down"
+        app:layout_constraintEnd_toStartOf="@+id/button_sleep" />
+
+    <ImageButton
+        android:id="@+id/button_sleep"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/sleep"
+        app:layout_constraintEnd_toEndOf="@id/line"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_shutdown" />
+
+    <ImageButton
+        android:id="@+id/button_restart"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="25dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/restart"
+        app:layout_constraintStart_toEndOf="@+id/button_sleep"
+        app:layout_constraintTop_toTopOf="@+id/button_sleep" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="#1E1E1E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/spinnerHolder"
+        android:layout_width="164dp"
+        android:layout_height="70dp"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_prev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_prev" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:dropDownWidth="match_parent"
+        android:paddingStart="15dp"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerHolder"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerHolder"
+        app:layout_constraintStart_toStartOf="@+id/spinnerHolder"
+        app:layout_constraintTop_toTopOf="@+id/spinnerHolder" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:background="#EA1A1A"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:elevation="3dp"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@id/line"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/spinnerHolder"
+        app:layout_constraintTop_toTopOf="@+id/spinnerHolder"
+        app:srcCompat="@drawable/ic_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

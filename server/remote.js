@@ -28,7 +28,7 @@ function openPlayer(name) {
 
 http.createServer(function (req, res) {
     // print request
-    //console.log('----------------REQUEST: ' + req.url);
+    console.log('----------------REQUEST: ' + req.url);
 
     // favicon
     if (req.url === '/favicon.ico') {

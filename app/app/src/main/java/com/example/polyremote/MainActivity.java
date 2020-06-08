@@ -2,23 +2,15 @@ package com.example.polyremote;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.ObjectAnimator;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -86,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         WebRequests.getInstance().setActivity(this);
         WebRequests.getInstance().setUrlRoot("http://192.168.100.97:6252/");
         // test connection
-        WebRequests.getInstance().testConnection(WebRequests.REMOTE_ACTION.MOUSE_RIGHT);
+        WebRequests.getInstance().testConnection(WebRequests.REMOTE_ACTION.TEST);
     }
 
     @Override
@@ -101,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (page) {
             case 0:
-                fragment = new MusicFragment();
+                fragment = new ControlFragment();
                 break;
             case 1:
                 fragment = new MouseFragment();
@@ -113,16 +105,13 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new DesktopFragment();
                 break;
             case 4:
-                fragment = new ProgramsFragment();
-                break;
-            case 5:
                 fragment = new SettingsFragment();
                 break;
         }
 
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(binding.fragmentHolder.getId(), fragment);
+            transaction.replace(binding.snackHolder.getId(), fragment);
             transaction.commit();
         }
 
@@ -134,8 +123,7 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonMouse.setOnClickListener((View v) -> { changeFragment(1); });
         binding.buttonKeyboard.setOnClickListener((View v) -> { changeFragment(2); });
         binding.buttonDesktop.setOnClickListener((View v) -> { changeFragment(3); });
-        binding.buttonPower.setOnClickListener((View v) -> { changeFragment(4); });
-        binding.buttonSettings.setOnClickListener((View v) -> { changeFragment(5); });
+        binding.buttonSettings.setOnClickListener((View v) -> { changeFragment(4); });
 
         // selected callback
         binding.selected.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -172,15 +160,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Snackbar snackbar = Snackbar.make(binding.snackHolder, msg, Snackbar.LENGTH_LONG);
-        snackbar.setTextColor(Color.WHITE);
-        snackbar.setActionTextColor(Color.GRAY);
+        //snackbar.setTextColor(Color.WHITE);
+        //snackbar.setActionTextColor(Color.GRAY);
+        snackbar.setBackgroundTint(Color.parseColor("#1C1C1C"));
 
         if (connected) {
             snackbar.setAction("OK", (View v) -> {
             });
-        } else if (page != 5) {
+        } else if (page != 4) {
             snackbar.setAction("SETTINGS", (View v) -> {
-                changeFragment(5);
+                changeFragment(4);
             });
         }
 

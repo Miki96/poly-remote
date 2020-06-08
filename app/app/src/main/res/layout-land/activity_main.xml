@@ -11,7 +11,7 @@
         android:id="@+id/top_nav"
         android:layout_width="65dp"
         android:layout_height="0dp"
-        android:background="#3E3E3E"
+        android:background="#0E0E0E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +20,7 @@
         android:id="@+id/selected"
         android:layout_width="5dp"
         android:layout_height="0dp"
-        android:background="#EEEEEE"
+        android:background="#EA1A1A"
         app:layout_constraintBottom_toBottomOf="@id/button_music"
         app:layout_constraintEnd_toEndOf="@+id/top_nav"
         app:layout_constraintTop_toTopOf="@id/button_music" />
@@ -30,19 +30,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:animateLayoutChanges="true"
-        android:background="#EEEEEE"
+        android:background="#151515"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/top_nav"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <FrameLayout
-            android:id="@+id/fragment_holder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageButton
         android:id="@+id/button_music"
@@ -58,7 +51,7 @@
         app:layout_constraintStart_toStartOf="@+id/button_mouse"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        app:srcCompat="@drawable/music" />
+        app:srcCompat="@drawable/ic_logo" />
 
     <ImageButton
         android:id="@+id/button_mouse"
@@ -99,26 +92,11 @@
         android:background="?android:selectableItemBackground"
         android:padding="21dp"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/button_power"
-        app:layout_constraintEnd_toEndOf="@+id/button_power"
-        app:layout_constraintStart_toStartOf="@+id/button_power"
+        app:layout_constraintBottom_toTopOf="@id/button_settings"
+        app:layout_constraintEnd_toEndOf="@id/button_settings"
+        app:layout_constraintStart_toStartOf="@id/button_settings"
         app:layout_constraintTop_toBottomOf="@+id/button_keyboard"
         app:srcCompat="@drawable/desktop" />
-
-    <ImageButton
-        android:id="@+id/button_power"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="65dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:background="?android:selectableItemBackground"
-        android:padding="21dp"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/button_settings"
-        app:layout_constraintEnd_toEndOf="@+id/button_settings"
-        app:layout_constraintStart_toStartOf="@+id/button_settings"
-        app:layout_constraintTop_toBottomOf="@+id/button_desktop"
-        app:srcCompat="@drawable/power" />
 
     <ImageButton
         android:id="@+id/button_settings"
@@ -131,7 +109,7 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_power"
+        app:layout_constraintTop_toBottomOf="@id/button_desktop"
         app:srcCompat="@drawable/settings" />
 
 

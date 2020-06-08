@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="#151515"
     tools:context=".MouseFragment">
 
     <View
@@ -15,26 +15,24 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="#E3E3E3"
+        android:background="#1C1C1C"
+        android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_touch"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView8"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:letterSpacing="0.05"
-        android:text="TOUCH"
-        android:textAlignment="center"
-        android:textColor="#A8A8A8"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/panel"
-        app:layout_constraintEnd_toEndOf="@+id/panel"
-        app:layout_constraintStart_toStartOf="@+id/panel"
-        app:layout_constraintTop_toTopOf="@+id/panel" />
+        android:layout_marginBottom="8dp"
+        android:text="HOLD"
+        android:textAlignment="viewStart"
+        android:textColor="#EA1A1A"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView4"
@@ -44,7 +42,8 @@
         android:layout_marginBottom="24dp"
         android:text="SCROLL"
         android:textAlignment="viewStart"
-        android:textColor="#AAAAAA"
+        android:textColor="#EFEFEF"
+        android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/panel"
         app:layout_constraintEnd_toEndOf="@+id/panel" />
 
@@ -55,7 +54,8 @@
         android:layout_marginBottom="8dp"
         android:text="RMB"
         android:textAlignment="viewStart"
-        android:textColor="#AAAAAA"
+        android:textColor="#EFEFEF"
+        android:elevation="3dp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/textView4" />
 
@@ -66,7 +66,8 @@
         android:layout_marginBottom="8dp"
         android:text="LMB"
         android:textAlignment="viewStart"
-        android:textColor="#AAAAAA"
+        android:elevation="3dp"
+        android:textColor="#EFEFEF"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="@+id/textView6" />
 
@@ -76,20 +77,10 @@
         android:layout_height="wrap_content"
         android:text="DRAG"
         android:textAlignment="viewStart"
-        android:textColor="#6E6E6E"
+        android:textColor="#EA1A1A"
+        android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="HOLD"
-        android:textAlignment="viewStart"
-        android:textColor="#6E6E6E"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView9"
@@ -98,8 +89,25 @@
         android:layout_marginBottom="8dp"
         android:text="TAP"
         android:textAlignment="viewStart"
-        android:textColor="#6E6E6E"
+        android:textColor="#EA1A1A"
+        android:elevation="3dp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/text_touch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.05"
+        android:text="TOUCH"
+        android:textAlignment="center"
+        android:textColor="#EFEFEF"
+        android:elevation="3dp"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/panel"
+        app:layout_constraintEnd_toEndOf="@+id/panel"
+        app:layout_constraintStart_toStartOf="@+id/panel"
+        app:layout_constraintTop_toTopOf="@+id/panel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
