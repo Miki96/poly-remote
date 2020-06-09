@@ -40,15 +40,18 @@
         app:layout_constraintStart_toStartOf="@id/view"
         app:layout_constraintTop_toTopOf="@id/view" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/button_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_refresh"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#EA1A1A"
+        android:elevation="3dp"
+        android:padding="18dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="@+id/image" />
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:srcCompat="@drawable/ic_connection" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

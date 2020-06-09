@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
 
     public static final String PAGE_DATA = "PAGE_DATA";
+    public static final String COMMAND_SELECTED = "COMMAND_SELECTED";
     private ActivityMainBinding binding;
     private Toast errorToast = null;
     private int page = 0;
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // load data from persistent storage
-        preferences = getPreferences(MODE_PRIVATE);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         loadData();
 
         // set web service
@@ -48,13 +53,20 @@ public class MainActivity extends AppCompatActivity {
         changeFragment(page);
 
         // create service
-        createService();
+        if (preferences.getBoolean("notifications", true)) {
+            createService();
+        }
     }
 
-    private void createService() {
+    public void createService() {
         Intent intent = new Intent(this, MusicService.class);
         intent.setAction(MusicService.ACTION_START);
         startService(intent);
+    }
+
+    public void stopService() {
+        Intent intent = new Intent(this, MusicService.class);
+        stopService(intent);
     }
 
 
@@ -68,17 +80,9 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putInt(PAGE_DATA, page);
-        super.onSaveInstanceState(outState);
-    }
-
     private void initializeService() {
         WebRequests.getInstance().setActivity(this);
-        WebRequests.getInstance().setUrlRoot("http://192.168.100.97:6252/");
-        // test connection
-        WebRequests.getInstance().testConnection(WebRequests.REMOTE_ACTION.TEST);
+        WebRequests.getInstance().setUrlRoot(preferences.getString("ip", ""));
     }
 
     @Override
@@ -152,9 +156,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void serverStatusUpdate(boolean connected) {
+
         String msg;
         if (connected) {
-            msg = "Server connected. Start using your remote";
+            msg = "Server connected. Start using your remote.";
         } else {
             msg = "Server error. Check IP in settings.";
         }
@@ -176,7 +181,26 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
 
         Log.d("MIKI", "STATUS");
+    }
 
+    public void addDefaultMediaPlayers() {
+        Resources res = getResources();
+        TypedArray players = res.obtainTypedArray(R.array.players);
+
+        for (int i = 0; i < players.length(); i++) {
+            int id = players.getResourceId(i, -1);
+            if (id != -1) {
+                String[] player = res.getStringArray(id);
+                Command cmd = new Command(player[0], player[1]);
+                AppDatabase.getInstance(getApplicationContext()).commandDao().insertCommand(cmd);
+            }
+        }
+
+        players.recycle();
+
+        Snackbar snackbar = Snackbar.make(binding.snackHolder, "Players added to commands.", Snackbar.LENGTH_LONG);
+        snackbar.setAction("OK", (View v) -> {});
+        snackbar.show();
     }
 
 }

@@ -4,10 +4,20 @@
         <item>Mercury</item>
         <item>Venus</item>
         <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
     </string-array>
+
+    <string-array name="player0">
+        <item>Groove</item>
+        <item>start shell:AppsFolder\\Microsoft.ZuneMusic_8wekyb3d8bbwe!Microsoft.ZuneMusic</item>
+    </string-array>
+
+    <string-array name="player1">
+        <item>PotPlayer</item>
+        <item>\"C:\\Program Files\\DAUM\\PotPlayer\\PotPlayerMini64.exe\"</item>
+    </string-array>
+
+    <array name="players">
+        <item>@array/player0</item>
+        <item>@array/player1</item>
+    </array>
 </resources>

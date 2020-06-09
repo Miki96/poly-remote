@@ -30,26 +30,28 @@ public class MusicService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        String action = intent.getAction();
-        switch (action) {
-            case ACTION_START:
-                createNotification();
-                break;
-            case ACTION_PLAY:
-                WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.PLAY);
-                break;
-            case ACTION_NEXT:
-                WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.NEXT);
-                break;
-            case ACTION_PREV:
-                WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.PREVIOUS);
-                break;
-            case ACTION_MUTE:
-                WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.MUTE);
-                break;
-            case ACTION_CLOSE:
-                stopSelf();
-                break;
+        if (intent != null) {
+            String action = intent.getAction();
+            switch (action) {
+                case ACTION_START:
+                    createNotification();
+                    break;
+                case ACTION_PLAY:
+                    WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.PLAY);
+                    break;
+                case ACTION_NEXT:
+                    WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.NEXT);
+                    break;
+                case ACTION_PREV:
+                    WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.PREVIOUS);
+                    break;
+                case ACTION_MUTE:
+                    WebRequests.getInstance().sendAction(WebRequests.REMOTE_ACTION.MUTE);
+                    break;
+                case ACTION_CLOSE:
+                    stopSelf();
+                    break;
+            }
         }
 
 
@@ -101,7 +103,7 @@ public class MusicService extends Service {
                 .setSmallIcon(R.drawable.ic_logo)
                 // Add media control buttons that invoke intents in your media service
                 .addAction(R.drawable.ic_prev, "Previous", pIntentPrev)
-                .addAction(R.drawable.ic_pause, "Pause", pIntentPlay)
+                .addAction(R.drawable.ic_play_arrow, "Pause", pIntentPlay)
                 .addAction(R.drawable.ic_next, "Next", pIntentNext)
                 .addAction(R.drawable.ic_volume_up, "Mute", pIntentMute)
                 .addAction(R.drawable.ic_close, "Close", pIntentClose)

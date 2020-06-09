@@ -55,6 +55,7 @@ public class WebRequests {
         KEYBOARD_RETURN,
         KEYBOARD_TAB,
         KEYBOARD_ESC,
+        COMMAND
     }
 
     private String urlRoot;
@@ -154,9 +155,16 @@ public class WebRequests {
         sendRequest(url);
     }
 
+    public void commandAction(REMOTE_ACTION action, String command) {
+        String actionCode = getAction(action);
+        String url = urlRoot + "?action=" + actionCode +
+                "&command=" + command;
+        sendRequest(url);
+    }
+
     public void getImage(REMOTE_ACTION action, NetworkImageView image) {
         String actionCode = getAction(action);
-        String url = urlRoot + "images/screenshot.jpg";
+        String url = urlRoot + "?action=" + actionCode;
         imageLoader.get(url, ImageLoader.getImageListener(image, 0, 0), 3000, 3000, ImageView.ScaleType.CENTER);
         image.setImageUrl(url, imageLoader);
     }
@@ -238,6 +246,9 @@ public class WebRequests {
                 break;
             case KEYBOARD_ESC:
                 r = "35";
+                break;
+            case COMMAND:
+                r = "100";
                 break;
         }
         return r;

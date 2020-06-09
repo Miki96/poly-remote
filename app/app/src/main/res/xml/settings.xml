@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        app:key="notifications_category"
-        app:title="Notifications">
+        app:key="server_category"
+        app:title="Server Configuration">
 
-        <SwitchPreferenceCompat
-            app:key="notifications"
-            app:title="Notification control"
-            app:summary="Show playback controls in notifications"/>
-
-        <SeekBarPreference
-            app:key="seek"
-            app:title="Seeker time"/>
+        <Preference
+            app:key="test"
+            app:icon="@drawable/ic_connection"
+            app:summary="Check if entered IP is correct"
+            app:title="Test connection"/>
 
         <EditTextPreference
             app:key="ip"
-            app:title="Server IP"
+            app:icon="@drawable/ic_link"
+            app:title="Desktop IP"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="192.168.0.1:2222"
+            app:defaultValue="http://192.168.0.1:2222"
             app:summary="Server address to control with remote"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:key="help_category"
-        app:title="Help">
+        app:key="remote_category"
+        app:title="Remote">
+
+        <SwitchPreferenceCompat
+            app:key="notifications"
+            app:icon="@drawable/ic_notifications"
+            app:defaultValue="true"
+            app:title="Notification control"
+            app:summary="Show playback controls in notifications"/>
+
+        <SeekBarPreference
+            app:key="mouse_speed"
+            app:icon="@drawable/ic_mouse"
+            app:min="1"
+            android:max="5"
+            app:defaultValue="2"
+            app:title="Mouse sensitivity"/>
 
         <Preference
-            app:key="feedback"
-            app:summary="Report technical issues or suggest new features"
-            app:title="Send feedback"/>
+            app:key="default"
+            app:icon="@drawable/ic_play_arrow"
+            app:summary="Add default media players to commands"
+            app:title="Media players"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="theme_category"
+        app:title="Theme">
+
+        <SwitchPreferenceCompat
+            app:key="dark"
+            app:icon="@drawable/ic_theme"
+            app:defaultValue="true"
+            app:title="Dark mode"
+            app:summary="Enable dark theme for Poly"/>
 
     </PreferenceCategory>
 

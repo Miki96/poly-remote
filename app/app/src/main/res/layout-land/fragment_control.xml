@@ -99,7 +99,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_vol_mute" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/button_commands"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -171,7 +171,7 @@
         android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/button_prev"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/button_launch"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
@@ -190,13 +190,13 @@
         app:layout_constraintTop_toTopOf="@+id/spinnerHolder" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/button_launch"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
         android:background="#EA1A1A"
-        android:foreground="?android:attr/selectableItemBackground"
         android:elevation="3dp"
+        android:foreground="?android:attr/selectableItemBackground"
         android:padding="20dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@id/line"

@@ -1,9 +1,11 @@
 package com.example.polyremote;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.core.view.GestureDetectorCompat;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -41,6 +43,8 @@ public class MouseFragment extends Fragment implements
         // scroll initialize
         scrollSpeed = 1;
         mouseSpeed = 1;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        mouseSpeed = sharedPreferences.getInt("mouse_speed", 1);
 
         // drag initialize
         dragSpeed = 1;

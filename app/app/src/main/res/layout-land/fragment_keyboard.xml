@@ -10,6 +10,7 @@
 
     <EditText
         android:id="@+id/editText_input"
+        android:imeOptions="flagNoExtractUi"
         android:layout_width="258dp"
         android:layout_height="117dp"
         android:layout_marginTop="32dp"

@@ -50,24 +50,6 @@ http.createServer(function (req, res) {
             return res.end(data);
         });
     }
-
-    // screenshot
-    else if (req.url.startsWith('/images/screenshot.jpg')) {
-        screenshot("images/screenshot.jpg", function(error, complete) {
-            if(error)
-                console.log("Screenshot failed", error);
-            else {
-                fs.readFile('images/screenshot.jpg', function(err, data) {
-                    if (err){
-                        throw err;
-                    }
-                    // send data
-                    res.writeHead(200, {'Content-Type': 'image/jpg'} );
-                    return res.end(data);
-                });
-            }
-        });
-    }
     
     // images
     else if (req.url.endsWith('.png') && req.url.startsWith('/images/')) {
@@ -189,13 +171,19 @@ http.createServer(function (req, res) {
                 break;
             case 8:
                 // sleep
-                // sendCommand(sleep);
+                sendCommand(sleep);
                 break;
             case 9:
                 // restart
                 sendCommand(restart);
                 break;
 
+                // execute custom command
+            case 100:
+                var command = url.parse(req.url, true).query.command;
+                sendCommand(command);
+                break;
+                    
                 // START PLAYERS
             case 101:
                 // restart
@@ -279,6 +267,23 @@ http.createServer(function (req, res) {
                 // backspace
                 robot.keyTap('escape');
                 break;
+                // DESKTOP
+            case 40:
+                screenshot("images/screenshot.jpg", function(error, complete) {
+                    if(error)
+                        console.log("Screenshot failed", error);
+                    else {
+                        fs.readFile('images/screenshot.jpg', function(err, data) {
+                            if (err){
+                                throw err;
+                            }
+                            // send data
+                            res.writeHead(200, {'Content-Type': 'image/jpg'} );
+                            return res.end(data);
+                        });
+                    }
+                });
+                return;
             default:
                 break;
         }
