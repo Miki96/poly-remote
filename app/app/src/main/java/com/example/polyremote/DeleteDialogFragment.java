@@ -33,11 +33,13 @@ public class DeleteDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(Html.fromHtml("Delete " + "<font color='#EE0000'>" + cmd.title + "</font>" + " command?" ))
-                .setPositiveButton("DELETE", (dialog, id) -> {
+        builder.setMessage(Html.fromHtml(getString(R.string.dialog_delete_delete) +
+                " <font color='#EE0000'>" + cmd.title + "</font> " +
+                getString(R.string.dialog_delete_command) + "?" ))
+                .setPositiveButton(R.string.dialog_delete_confirm, (dialog, id) -> {
                     listener.onDeletePositiveClick(cmd);
                 })
-                .setNegativeButton("CANCEL", (dialog, id) -> {});
+                .setNegativeButton(R.string.dialog_delete_cancel, (dialog, id) -> {});
         return builder.create();
     }
 

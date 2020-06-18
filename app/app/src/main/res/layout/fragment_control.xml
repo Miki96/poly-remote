@@ -108,14 +108,13 @@
         android:id="@+id/button_commands"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="#EA1A1A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="20dp"
-        app:srcCompat="@drawable/edit" />
+        app:srcCompat="@drawable/ic_edit" />
 
     <ImageButton
         android:id="@+id/button_shutdown"

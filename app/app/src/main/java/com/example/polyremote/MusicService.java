@@ -113,8 +113,8 @@ public class MusicService extends Service {
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                         .setShowActionsInCompactView(0, 1, 2)
                         .setShowCancelButton(true))
-                .setContentTitle("Micro Remote")
-                .setContentText("Connected")
+                .setContentTitle(getString(R.string.notification_title))
+                .setContentText(getString(R.string.notification_extra_text))
                 .setOnlyAlertOnce(true)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.mini_logo))
                 .build();

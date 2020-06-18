@@ -1,8 +1,48 @@
 <resources>
     <string name="app_name">Poly</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mouse_touch">TOUCH</string>
+    <string name="mouse_tap">TAP</string>
+    <string name="mouse_hold">HOLD</string>
+    <string name="mouse_drag">DRAG</string>
+    <string name="mouse_lmb" translatable="false">LMB</string>
+    <string name="mouse_rmb" translatable="false">RMB</string>
+    <string name="mouse_scroll" translatable="false">SCROLL</string>
 
+    <string name="command_edit_commands">Edit Commands</string>
+    <string name="command_dialog_title">Title</string>
+    <string name="command_dialog_command">Command</string>
+
+    <string name="keyboard_enter_text">Enter your text here…</string>
+
+    <string name="settings_check_connection">Check if entered IP is correct</string>
+    <string name="settings_connection_title">Test connection</string>
+    <string name="settings_ip_title">Server IP</string>
+    <string name="settings_ip_summary">Server address to control with remote</string>
+    <string name="settings_category_server">Server Configuration</string>
+    <string name="settings_category_remote">Remote</string>
+    <string name="settings_category_theme">Theme</string>
+    <string name="settings_notification_title">Notification control</string>
+    <string name="settings_notification_summary">Show playback controls in notifications</string>
+    <string name="settings_mouse_title">Mouse sensitivity</string>
+    <string name="settings_players_title">Media players</string>
+    <string name="settings_players_summary">Add default media players to commands</string>
+    <string name="settings_theme_dark_title">Dark mode</string>
+    <string name="settings_theme_dark_summary">Enable dark theme for Poly</string>
+
+    <string name="dialog_create_title">Create Command</string>
+    <string name="dialog_create_save">SAVE</string>
+    <string name="dialog_create_cancel">CANCEL</string>
+
+    <string name="dialog_delete_delete">Delete</string>
+    <string name="dialog_delete_command">command</string>
+    <string name="dialog_delete_confirm">DELETE</string>
+    <string name="dialog_delete_cancel">CANCEL</string>
+
+    <string name="server_connected">Server connected. Start using your remote.</string>
+    <string name="server_error">Server error. Check IP in settings.</string>
+    <string name="players_added">Players added to commands.</string>
+    <string name="notification_title">Micro Remote</string>
+    <string name="notification_extra_text">Connected</string>
 
 </resources>

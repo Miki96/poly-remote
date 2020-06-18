@@ -4,34 +4,34 @@
 
     <PreferenceCategory
         app:key="server_category"
-        app:title="Server Configuration">
+        app:title="@string/settings_category_server">
 
         <Preference
             app:key="test"
             app:icon="@drawable/ic_connection"
-            app:summary="Check if entered IP is correct"
-            app:title="Test connection"/>
+            app:summary="@string/settings_check_connection"
+            app:title="@string/settings_connection_title"/>
 
         <EditTextPreference
             app:key="ip"
             app:icon="@drawable/ic_link"
-            app:title="Desktop IP"
+            app:title="@string/settings_ip_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="http://192.168.0.1:2222"
-            app:summary="Server address to control with remote"/>
+            app:defaultValue="http://192.168.0.1:3333"
+            app:summary="@string/settings_ip_summary"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
         app:key="remote_category"
-        app:title="Remote">
+        app:title="@string/settings_category_remote">
 
         <SwitchPreferenceCompat
             app:key="notifications"
             app:icon="@drawable/ic_notifications"
             app:defaultValue="true"
-            app:title="Notification control"
-            app:summary="Show playback controls in notifications"/>
+            app:title="@string/settings_notification_title"
+            app:summary="@string/settings_notification_summary"/>
 
         <SeekBarPreference
             app:key="mouse_speed"
@@ -39,26 +39,26 @@
             app:min="1"
             android:max="5"
             app:defaultValue="2"
-            app:title="Mouse sensitivity"/>
+            app:title="@string/settings_mouse_title"/>
 
         <Preference
             app:key="default"
             app:icon="@drawable/ic_play_arrow"
-            app:summary="Add default media players to commands"
-            app:title="Media players"/>
+            app:summary="@string/settings_players_summary"
+            app:title="@string/settings_players_title"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
         app:key="theme_category"
-        app:title="Theme">
+        app:title="@string/settings_category_theme">
 
         <SwitchPreferenceCompat
             app:key="dark"
             app:icon="@drawable/ic_theme"
             app:defaultValue="true"
-            app:title="Dark mode"
-            app:summary="Enable dark theme for Poly"/>
+            app:title="@string/settings_theme_dark_title"
+            app:summary="@string/settings_theme_dark_summary"/>
 
     </PreferenceCategory>
 

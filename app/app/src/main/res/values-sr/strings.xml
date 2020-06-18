@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Poly</string>
+    <string name="mouse_touch">DODIRNI</string>
+    <string name="mouse_tap">KLIKNI</string>
+    <string name="mouse_hold">DRŽI</string>
+    <string name="mouse_drag">VUCI</string>
+    <string name="command_edit_commands">Izmeni komande</string>
+    <string name="command_dialog_title">Naziv</string>
+    <string name="command_dialog_command">Komanda</string>
+    <string name="keyboard_enter_text">Unesi tekst...</string>
+    <string name="settings_check_connection">Proveri uneseni IP</string>
+    <string name="settings_connection_title">Test konekcije</string>
+    <string name="settings_ip_title">Server IP</string>
+    <string name="settings_ip_summary">Adresa računara koji se kontroliše</string>
+    <string name="settings_category_server">Konfiguracija Servera</string>
+    <string name="settings_category_remote">Upravljač</string>
+    <string name="settings_category_theme">Tema</string>
+    <string name="settings_notification_title">Kontrola obaveštenja</string>
+    <string name="settings_notification_summary">Prikaži kontrole u obaveštenjima</string>
+    <string name="settings_mouse_title">Brzina miša</string>
+    <string name="settings_players_title">Programi</string>
+    <string name="settings_players_summary">Dodaj standardne programe u komande</string>
+    <string name="settings_theme_dark_title">Tamni režim</string>
+    <string name="settings_theme_dark_summary">Omogući tamnu temu aplikacije</string>
+    <string name="dialog_create_title">Kreiraj komandu</string>
+    <string name="dialog_create_save">SAČUVAJ</string>
+    <string name="dialog_create_cancel">PONIŠTI</string>
+    <string name="dialog_delete_delete">Obriši</string>
+    <string name="dialog_delete_command">komandu</string>
+    <string name="dialog_delete_confirm">OBRIŠI</string>
+    <string name="dialog_delete_cancel">PONIŠTI</string>
+    <string name="server_connected">Server povezan. Upravljaj svojim računarom.</string>
+    <string name="server_error">Greška na serveru. Proveri IP u podešavanjima.</string>
+    <string name="players_added">Programi dodati u komande.</string>
+    <string name="notification_title">Mini Upravljač</string>
+    <string name="notification_extra_text">Povezan</string>
+</resources>

@@ -159,28 +159,26 @@ public class MainActivity extends AppCompatActivity {
 
         String msg;
         if (connected) {
-            msg = "Server connected. Start using your remote.";
+            msg = getString(R.string.server_connected);
         } else {
-            msg = "Server error. Check IP in settings.";
+            msg = getString(R.string.server_error);
         }
 
         Snackbar snackbar = Snackbar.make(binding.snackHolder, msg, Snackbar.LENGTH_LONG);
-        //snackbar.setTextColor(Color.WHITE);
-        //snackbar.setActionTextColor(Color.GRAY);
+//        snackbar.setTextColor(Color.WHITE);
+//        snackbar.setActionTextColor(Color.GRAY);
         snackbar.setBackgroundTint(Color.parseColor("#1C1C1C"));
 
-        if (connected) {
-            snackbar.setAction("OK", (View v) -> {
-            });
-        } else if (page != 4) {
-            snackbar.setAction("SETTINGS", (View v) -> {
-                changeFragment(4);
-            });
-        }
+        snackbar.setAction("OK", (View v) -> {});
+
+//        if (connected) {
+//        } else if (page != 4) {
+//            snackbar.setAction("SETTINGS", (View v) -> {
+//                changeFragment(4);
+//            });
+//        }
 
         snackbar.show();
-
-        Log.d("MIKI", "STATUS");
     }
 
     public void addDefaultMediaPlayers() {
@@ -198,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
         players.recycle();
 
-        Snackbar snackbar = Snackbar.make(binding.snackHolder, "Players added to commands.", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(binding.snackHolder, R.string.players_added, Snackbar.LENGTH_LONG);
         snackbar.setAction("OK", (View v) -> {});
         snackbar.show();
     }

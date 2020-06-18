@@ -45,11 +45,11 @@ public class CommandDialogFragment extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         builder.setView(inflater.inflate(R.layout.dialog_command, null))
-                .setTitle("Create Command")
-                .setPositiveButton("SAVE", (dialog, id) -> {
+                .setTitle(R.string.dialog_create_title)
+                .setPositiveButton(R.string.dialog_create_save, (dialog, id) -> {
                     listener.onCommandPositiveClick(this);
                 })
-                .setNegativeButton("CANCEL", (dialog, id) -> {});
+                .setNegativeButton(R.string.dialog_create_cancel, (dialog, id) -> {});
         return builder.create();
     }
 

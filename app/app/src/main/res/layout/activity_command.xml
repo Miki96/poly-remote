@@ -33,7 +33,7 @@
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Commands"
+        android:text="@string/command_edit_commands"
         android:textColor="#D1D1D1"
         android:textSize="20sp"
         android:typeface="normal"
