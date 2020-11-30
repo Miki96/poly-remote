@@ -1,10 +1,8 @@
 package com.example.polyremote;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -81,6 +79,10 @@ public class WebRequests {
 
     public void setUrlRoot(String urlRoot) {
         this.urlRoot = urlRoot;
+    }
+
+    public String getUrlRoot() {
+        return this.urlRoot;
     }
 
     public void setActivity(MainActivity activity) {

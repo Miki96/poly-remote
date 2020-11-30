@@ -7,7 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 
+import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,10 @@ import android.widget.Toast;
 
 import com.example.polyremote.databinding.FragmentControlBinding;
 
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Random;
 
 
@@ -71,6 +77,7 @@ public class ControlFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selected = position;
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 selected = -1;
@@ -104,6 +111,19 @@ public class ControlFragment extends Fragment {
                 WebRequests.getInstance().commandAction(WebRequests.REMOTE_ACTION.COMMAND, cmd.command);
             }
         });
+
+        // wake on lan
+        binding.buttonShutdown.setOnClickListener((View v) -> {
+            //wakeOnLan(WebRequests.getInstance().getUrlRoot(), null);
+
+            new Thread(new Runnable() {
+                public void run() {
+                    wakeOnLan();
+                }
+            }).start();
+
+        });
+
     }
 
     private void addAction(ImageButton button, WebRequests.REMOTE_ACTION action) {
@@ -126,5 +146,50 @@ public class ControlFragment extends Fragment {
 
     private void loadData() {
         selected = preferences.getInt(MainActivity.COMMAND_SELECTED, -1);
+    }
+
+    private void wakeOnLan() {
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(getContext());
+        String ip = sharedPreferences.getString("broad_ip", "192.168.0.255");
+        String mac = sharedPreferences.getString("mac", "00:00:00:00:00:00");
+
+        try {
+            byte[] macBytes = getMacBytes(mac);
+            byte[] bytes = new byte[6 + 16 * macBytes.length];
+            for (int i = 0; i < 6; i++) {
+                bytes[i] = (byte) 0xff;
+            }
+            for (int i = 6; i < bytes.length; i += macBytes.length) {
+                System.arraycopy(macBytes, 0, bytes, i, macBytes.length);
+            }
+
+            InetAddress address = InetAddress.getByName(ip);
+            DatagramPacket packet = new DatagramPacket(bytes, bytes.length, address, 9);
+            DatagramSocket socket = new DatagramSocket();
+            socket.send(packet);
+            socket.close();
+
+            Log.i("Poly", "Wake-on-LAN packet sent.");
+        } catch (Exception e) {
+            Log.e("Poly", "Failed to send Wake-on-LAN packet:" + e);
+        }
+    }
+
+    private static byte[] getMacBytes(String macStr) throws IllegalArgumentException {
+        byte[] bytes = new byte[6];
+        String[] hex = macStr.split("(\\:|\\-)");
+        if (hex.length != 6) {
+            throw new IllegalArgumentException("Invalid MAC address.");
+        }
+        try {
+            for (int i = 0; i < 6; i++) {
+                bytes[i] = (byte) Integer.parseInt(hex[i], 16);
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid hex digit in MAC address.");
+        }
+        return bytes;
     }
 }

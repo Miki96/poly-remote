@@ -50,6 +50,28 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        app:key="wake_category"
+        app:title="@string/settings_category_wake">
+
+        <EditTextPreference
+            app:key="broad_ip"
+            app:icon="@drawable/ic_wifi"
+            app:title="@string/settings_broad_ip_title"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="192.168.0.255"
+            app:summary="@string/settings_broad_ip_summary"/>
+
+        <EditTextPreference
+            app:key="mac"
+            app:icon="@drawable/ic_desktop"
+            app:title="@string/settings_mac_title"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="00:00:00:00:00:00"
+            app:summary="@string/settings_mac_summary"/>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
         app:key="theme_category"
         app:title="@string/settings_category_theme">
 

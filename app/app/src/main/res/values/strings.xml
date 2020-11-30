@@ -44,5 +44,10 @@
     <string name="players_added">Players added to commands.</string>
     <string name="notification_title">Micro Remote</string>
     <string name="notification_extra_text">Connected</string>
+    <string name="settings_category_wake">Wake On Lan</string>
+    <string name="settings_broad_ip_title">Broadcast IP</string>
+    <string name="settings_broad_ip_summary">Broadcast address to Wake On Lan</string>
+    <string name="settings_mac_title">MAC address</string>
+    <string name="settings_mac_summary">Media access control address of target PC</string>
 
 </resources>
